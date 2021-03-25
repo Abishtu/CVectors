@@ -2,6 +2,6 @@
 
 `C++` like vectors for C
 
-![](/home/harikeshasuresh/Documents/CVectors/weird.png)
+![](./weird.png)
 
 What is going on!!!
