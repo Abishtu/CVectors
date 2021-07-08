@@ -10,6 +10,7 @@ typedef struct {
   int size;
 }VectorAttributes;
 
+
 typedef struct _Vector Vector;
 struct _Vector {
   VectorAttributes vec_attri;
@@ -18,6 +19,8 @@ struct _Vector {
   void **(*getVector) (Vector *);
   int (*getSize) (Vector *);
   void *(*getElem) (Vector *, int);
+  void (*popElem) (Vector *, int);
+  void (*freeVector) (Vector *);
 };
 
 bool _pushBack(Vector *v, void *data);
@@ -25,6 +28,7 @@ bool _resize(Vector *v, int size);
 void **_getVector(Vector *v);
 int _getSize(Vector *v);
 void *_getElem(Vector *v, int index);
+void _freeVector(Vector *v);
 
 void init_vector(Vector *v);
 

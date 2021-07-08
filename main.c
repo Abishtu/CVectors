@@ -8,27 +8,18 @@ int main (int argc, char **argv) {
   Vector v;
   init_vector(&v);
 
-  // Integer Array
-  int one = 1;
-  int two = 2;
+  v.pushBack(&v, "Hello World");
+  v.pushBack(&v, "Foo");
 
-  v.pushBack(&v, &one);
-  v.pushBack(&v, &two);
-  printf("Integer Vector:\n");
-  for (int i = 0; i < v.getSize(&v); i++) {
-    printf("%d, ", (int) *((int *)v.getElem(&v, i)));
+  for(int index = 0; index < v.getSize(&v); index++) {
+    if(index == v.getSize(&v)-1) {
+      printf("%s\n", (char *) v.getElem(&v, index));
+    } else {
+      printf("%s, ", (char *) v.getElem(&v, index));
+    }
   }
-  printf("\n");
 
-  // String Array
-  v.pushBack(&v, "Hello");
-  v.pushBack(&v, "Word!");
-  printf("String Vector:\n");
-  for (int i = 0; i < v.getSize(&v); i++) {
-    printf("%s, ", (char *) v.getElem(&v, i));
-  }
-  printf("\n\nThis is Weird:\n%d, %d, %s, %s", *((int *) v.getElem(&v, 0)), *((int *) v.getElem(&v, 1)), (char *) v.getElem(&v, 2), (char *) v.getElem(&v, 3));
+  v.freeVector(&v);
 
-  printf("\n");
   return 0;
 }

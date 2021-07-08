@@ -3,7 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+/**
+ * Resizes the vector by size, this is excecuted when new elements are
+ * appended to the vector
+ *
+ * RETURN:
+ * 	true: if vector was resized without any issues/complications
+ * 	false: if any errors were encountered during resize
+ */
 bool _resize(Vector *v, int size) {
   if (v != NULL && size > 0) {
     v->vec_attri.vec = realloc(v->vec_attri.vec,
@@ -46,6 +53,14 @@ void *_getElem(Vector *v, int index) {
   return data;
 }
 
+void _freeVector(Vector *v) {
+
+  if (v) {
+    free(v->vec_attri.vec);
+    v->vec_attri.vec = NULL;
+  }
+}
+
 void init_vector(Vector *v) {
 
   v->pushBack = _pushBack;
@@ -53,7 +68,7 @@ void init_vector(Vector *v) {
   v->getVector = _getVector;
   v->getSize = _getSize;
   v->getElem = _getElem;
-
+  v->freeVector = _freeVector;
   v->vec_attri.vec = malloc(sizeof(void *));
   v->vec_attri.size = 0;
 }
