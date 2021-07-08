@@ -11,9 +11,10 @@ int main (int argc, char **argv) {
   v.pushBack(&v, "Hello World");
   v.pushBack(&v, "Foo");
 
+  printf("[");
   for(int index = 0; index < v.getSize(&v); index++) {
     if(index == v.getSize(&v)-1) {
-      printf("%s\n", (char *) v.getElem(&v, index));
+      printf("%s]\n", (char *) v.getElem(&v, index));
     } else {
       printf("%s, ", (char *) v.getElem(&v, index));
     }
